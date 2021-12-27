@@ -5,7 +5,7 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
 && apt-get -y install software-properties-common \
 && add-apt-repository ppa:ondrej/php \
 && apt-get update \
-&& DEBIAN_FRONTEND=noninteractive apt-get -y install php7.0 \
+&& DEBIAN_FRONTEND=noninteractive apt-get -y install php8.1 \
 && apt-get install -y vim \
 && chown www-data:www-data /var/www/html
 
