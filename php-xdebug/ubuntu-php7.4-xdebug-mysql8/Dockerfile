@@ -1,0 +1,20 @@
+FROM ubuntu:20.04
+
+RUN echo "ZGViIGh0dHA6Ly9taXJyb3JzLmFsaXl1bi5jb20vdWJ1bnR1LyBmb2NhbCBtYWluIHJlc3RyaWN0ZWQgdW5pdmVyc2UgbXVsdGl2ZXJzZSAKCmRlYiBodHRwOi8vbWlycm9ycy5hbGl5dW4uY29tL3VidW50dS8gZm9jYWwtc2VjdXJpdHkgbWFpbiByZXN0cmljdGVkIHVuaXZlcnNlIG11bHRpdmVyc2UgCgpkZWIgaHR0cDovL21pcnJvcnMuYWxpeXVuLmNvbS91YnVudHUvIGZvY2FsLXVwZGF0ZXMgbWFpbiByZXN0cmljdGVkIHVuaXZlcnNlIG11bHRpdmVyc2UgCgpkZWIgaHR0cDovL21pcnJvcnMuYWxpeXVuLmNvbS91YnVudHUvIGZvY2FsLXByb3Bvc2VkIG1haW4gcmVzdHJpY3RlZCB1bml2ZXJzZSBtdWx0aXZlcnNlIAoKZGViIGh0dHA6Ly9taXJyb3JzLmFsaXl1bi5jb20vdWJ1bnR1LyBmb2NhbC1iYWNrcG9ydHMgbWFpbiByZXN0cmljdGVkIHVuaXZlcnNlIG11bHRpdmVyc2UgCgpkZWItc3JjIGh0dHA6Ly9taXJyb3JzLmFsaXl1bi5jb20vdWJ1bnR1LyBmb2NhbCBtYWluIHJlc3RyaWN0ZWQgdW5pdmVyc2UgbXVsdGl2ZXJzZSAKCmRlYi1zcmMgaHR0cDovL21pcnJvcnMuYWxpeXVuLmNvbS91YnVudHUvIGZvY2FsLXNlY3VyaXR5IG1haW4gcmVzdHJpY3RlZCB1bml2ZXJzZSBtdWx0aXZlcnNlIAoKZGViLXNyYyBodHRwOi8vbWlycm9ycy5hbGl5dW4uY29tL3VidW50dS8gZm9jYWwtdXBkYXRlcyBtYWluIHJlc3RyaWN0ZWQgdW5pdmVyc2UgbXVsdGl2ZXJzZSAKCmRlYi1zcmMgaHR0cDovL21pcnJvcnMuYWxpeXVuLmNvbS91YnVudHUvIGZvY2FsLXByb3Bvc2VkIG1haW4gcmVzdHJpY3RlZCB1bml2ZXJzZSBtdWx0aXZlcnNlIAoKZGViLXNyYyBodHRwOi8vbWlycm9ycy5hbGl5dW4uY29tL3VidW50dS8gZm9jYWwtYmFja3BvcnRzIG1haW4gcmVzdHJpY3RlZCB1bml2ZXJzZSBtdWx0aXZlcnNlIGZvY2Fs" | base64 -d > /etc/apt/sources.list \
+&& apt-get update \
+&& apt-get install -y vim \
+&& DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-server \
+&& sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config \
+&& echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
+&& echo "root:root" | chpasswd \
+&& apt-get install -y php \
+&& apt-get install -y php-xdebug \
+&& echo "W1hEZWJ1Z10KOyDlpoLmnpzlpKflrrbopoHphY3nva7ov5nkuKrnmoTor53vvIzlj6/ku6XmqKHku7/kuIDkuIvkuIvpnaLnmoTop4TliJnvvIzljrvlr7nlupTnmoTniYjmnKznm67lvZXkuIvmib7liLDlr7nlupTnmoQgeGRlYnVnLnNvIOaWh+S7tuWNs+WPrwo7emVuZF9leHRlbnNpb249L3Vzci9saWIvcGhwLzIwMTkwOTAyL3hkZWJ1Zy5zbyDlhbbku5bniYjmnKznm67lvZXkuI3lkIzvvIzkvb/nlKjnm7jlr7not6/lvoQKemVuZF9leHRlbnNpb249eGRlYnVnLnNvCgo7IOW8gOWQr+i/nOeoi+iwg+ivleWKn+iDvQp4ZGVidWcucmVtb3RlX2VuYWJsZT0xCgo7IOi/nOeoi+iwg+ivleWcsOWdgAp4ZGVidWcucmVtb3RlX2hvc3Q9bG9jYWxob3N0Cgo7IOi/nOeoi+iwg+ivleerr+WPowp4ZGVidWcucmVtb3RlX3BvcnQ9OTAwMAoKOyDmr4/mrKHmiafooYzohJrmnKzpg73kvJrlkK/liqggeGRlYnVnIOiwg+ivlQp4ZGVidWcucmVtb3RlX2F1dG9zdGFydCA9IDEKCjsg5q+P5qyh6K+35rGC6YO95Lya55Sf5oiQ5LiA5Liq5oCn6IO95oql5ZGK5paH5Lu2CnhkZWJ1Zy5wcm9maWxlcl9lbmFibGUgPSAxCgo7IOWcqCBJREUg5LiK562J5b6F56Gu6K6k5Lyg5YWl6LCD6K+V6L+e5o6l5Lul55qE5pe26Ze0KOavq+enkikKeGRlYnVnLnJlbW90ZV90aW1lb3V0PTIwMDAKCjsgZGVidWcg6LCD6K+V55qE5pel5b+X5L2N572uCnhkZWJ1Zy5yZW1vdGVfbG9nID0gL3RtcC94ZGVidWcubG9n" | base64 -d >> /etc/php/7.4/cli/php.ini \
+&& apt-get install -y mysql-server \
+&& apt-get install -y php7.4-mysql \
+&& echo "default_authentication_plugin=mysql_native_password" >> /etc/mysql/mysql.conf.d/mysqld.cnf
+
+CMD  service mysql start && mysql -e "use mysql;update user set authentication_string = '' where user = 'root';ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'smcq123';" -uroot && service mysql restart && service ssh restart && exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
+
+EXPOSE 80
+EXPOSE 22
