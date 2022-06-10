@@ -1,6 +1,6 @@
 # 配置介绍
 
-​	整体配置过程参考 https://www.sqlsec.com/2020/09/xdebug.html#toc-heading-8 ，先测试php7.4，毕竟是Ubuntu20.04默认的，安装ssh和php，没用apache2（但发现docker里好像有apache2？整完看看），把xdebug的配置写入 /etc/php/7.4/cli/php.ini 
+​	整体配置过程参考 https://www.sqlsec.com/2020/09/xdebug.html#toc-heading-8 ，先测试php7.4，毕竟是Ubuntu20.04默认的，安装ssh和php，把xdebug的配置写入 /etc/php/7.4/cli/php.ini     /etc/php/7.4/apache2/php.ini
 
 ​	php8.1-xdebug参考 https://xdebug.org/docs/upgrade_guide#changed-xdebug.auto_trace    http://www.feimoc.com/2021/03/21/PhpStorm+Xdebug3/#xdebug%E9%85%8D%E7%BD%AE
 
@@ -61,7 +61,9 @@ xdebug.var_display_max_data  = 2048
 
 2，按国光师傅上面写的文章连接到docker容器，root/root  （需要vscode扩展）
 
-3，在项目目录下 php  -S   0.0.0.0:80   (我这里写的暴露22和80端口) （其他版本可能会安装php8.1，不太清楚为啥，还没解决，需要注意一下php版本）
+3，在项目目录下 php  -S   0.0.0.0:80   (我这里写的暴露22和80端口) 
+
+​	  目前也支持将项目添加到 /var/www/html 目录（修改后配置文件同步添加到了/etc/php/x.x/apache2/php.ini目录下）
 
 4，在容器内安装扩展<img src="https://raw.githubusercontent.com/smcq-dbc/upload_picture/main/image-20220609121215702.png" alt="image-20220609121215702" style="zoom:80%;" /> 
 

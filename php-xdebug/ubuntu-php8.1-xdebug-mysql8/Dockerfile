@@ -12,6 +12,7 @@ RUN apt-get install -y vim \
 && echo "root:root" | chpasswd \
 && apt-get install -y php8.1-xdebug \
 && echo "W1hEZWJ1Z10KemVuZF9leHRlbnNpb24gPSB4ZGVidWcuc28KeGRlYnVnLmxvZyAgPSAvdG1wL3hkZWJ1Zy5sb2cKeGRlYnVnLm1vZGUgPSBkZXZlbG9wLGRlYnVnCnhkZWJ1Zy5zdGFydF93aXRoX3JlcXVlc3QgPSB5ZXMKI3hkZWJ1Zy5zdGFydF93aXRoX3JlcXVlc3QgPSB5ZXMgI+W9k+aUueS4unllc+aXtuaJgOacieivt+axgumDveS8mui1sGRlYnVn77yM5LiN6ZyA6KaB6K6+572uaWRla2V5CnhkZWJ1Zy5jbGllbnRfcG9ydCA9IDkwMDMKeGRlYnVnLmNsaWVudF9ob3N0ID0gMTI3LjAuMC4xCnhkZWJ1Zy5yZW1vdGVfaGFuZGxlciA9IGRiZ3AKeGRlYnVnLmNsaV9jb2xvciA9IDIKeGRlYnVnLnZhcl9kaXNwbGF5X21heF9kZXB0aCA9IDE1CnhkZWJ1Zy52YXJfZGlzcGxheV9tYXhfZGF0YSAgPSAyMDQ4" | base64 -d >> /etc/php/8.1/cli/php.ini \
+&& echo "W1hEZWJ1Z10KemVuZF9leHRlbnNpb24gPSB4ZGVidWcuc28KeGRlYnVnLmxvZyAgPSAvdG1wL3hkZWJ1Zy5sb2cKeGRlYnVnLm1vZGUgPSBkZXZlbG9wLGRlYnVnCnhkZWJ1Zy5zdGFydF93aXRoX3JlcXVlc3QgPSB5ZXMKI3hkZWJ1Zy5zdGFydF93aXRoX3JlcXVlc3QgPSB5ZXMgI+W9k+aUueS4unllc+aXtuaJgOacieivt+axgumDveS8mui1sGRlYnVn77yM5LiN6ZyA6KaB6K6+572uaWRla2V5CnhkZWJ1Zy5jbGllbnRfcG9ydCA9IDkwMDMKeGRlYnVnLmNsaWVudF9ob3N0ID0gMTI3LjAuMC4xCnhkZWJ1Zy5yZW1vdGVfaGFuZGxlciA9IGRiZ3AKeGRlYnVnLmNsaV9jb2xvciA9IDIKeGRlYnVnLnZhcl9kaXNwbGF5X21heF9kZXB0aCA9IDE1CnhkZWJ1Zy52YXJfZGlzcGxheV9tYXhfZGF0YSAgPSAyMDQ4" | base64 -d >> /etc/php/8.1/apache2/php.ini \
 && apt-get install -y mysql-server \
 && apt-get install -y php8.1-mysql \
 && echo "default_authentication_plugin=mysql_native_password" >> /etc/mysql/mysql.conf.d/mysqld.cnf
