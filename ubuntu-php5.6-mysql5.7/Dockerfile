@@ -15,8 +15,8 @@ RUN echo "ZGViIGh0dHA6Ly9taXJyb3JzLmFsaXl1bi5jb20vdWJ1bnR1LyBiaW9uaWMgbWFpbiByZX
 COPY src /var/www/html/
 
 CMD  service apache2 start && service mysql start && \
- mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'smcq123';flush privileges;" -uroot -proot && \
- exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
+ mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'smcq123';flush privileges;" -uroot && \
+ service mysql restart && export FLAG=not_flag && FLAG=not_flag && exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
 EXPOSE 80
 
